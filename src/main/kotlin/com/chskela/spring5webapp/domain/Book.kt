@@ -13,13 +13,16 @@ data class Book(
     val title: String,
     val isbn: String,
 
+    @ManyToOne
+    val publisher: Publisher,
+
     @ManyToMany
     @JoinTable(
         name = "author_book",
         joinColumns = [JoinColumn(name = "book_id")],
         inverseJoinColumns = [JoinColumn(name = "author_id")]
     )
-    val authors: Set<Author>
+    val authors: Set<Author> = setOf()
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
