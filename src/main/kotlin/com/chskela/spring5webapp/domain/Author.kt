@@ -14,7 +14,7 @@ data class Author(
     val lastName: String,
 
     @ManyToMany(mappedBy = "authors")
-    val books: Set<Book>
+    val books: Set<Book> = setOf()
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
